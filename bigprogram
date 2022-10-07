@@ -1,0 +1,29 @@
+import os
+print ("Welcome to the Bid Auction")
+
+#initiaiting the loop
+another_bid = "yes"
+
+#create an empty dictionary
+bids={}
+
+while another_bid == "yes":
+    bidder_name = input ("Enter your name : ")
+    bid_price = float(input("Enter Bid amount : "))
+    #add bidder name and their bid to the empty dictionary
+    bids[bidder_name] = bid_price
+    #ask if there are other bids
+    another_bid = input("Are there other bids ? Yes or No :").lower()
+    #clear screen if there is another bid
+    if another_bid == "yes":
+        os.system("cls")
+
+#print our winner
+max_value = max(bids.values())
+print (f"Maximum Value Bid: {max_value}")
+max_bidder_list = [key for key,value in bids.items() if value == max_value ]
+print (f"max_bidder_list {max_bidder_list}")
+max_bidder = "".join(max_bidder_list)
+print(f"Name of the Bidder : {max_bidder}")
+
+print(f"Thanks for all the bids. The winner of this bid round is {max_bidder}")
